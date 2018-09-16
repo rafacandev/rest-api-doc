@@ -11,7 +11,7 @@ import io.restassured.specification.FilterableResponseSpecification;
 
 public class SpecificationFilter implements Filter {
 
-	private static final Logger LOGGER = LoggerFactory.getLogger(RequestFilter.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(SpecificationFilter.class);
 	private FilterableRequestSpecification filterableRequestSpecification;
 
 	@Override
