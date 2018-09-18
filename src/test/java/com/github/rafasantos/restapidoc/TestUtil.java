@@ -22,20 +22,20 @@ public class TestUtil {
 	 * 
 	 */
 	public static final String URL = "http://www.mocky.io/v2/5a08a8cb3200000a0a138011";
-	private static SpecificationFilter getBasicRequestSpecificationFilter;
+	private static SpecificationFilter basicGetRequestSpecificationFilter;
 
 	public static SpecificationFilter buildBasicGetRequestFilter() {
-		if (getBasicRequestSpecificationFilter == null) {
+		if (basicGetRequestSpecificationFilter == null) {
 			SpecificationFilter result = new SpecificationFilter();
-			RestAssured.given().filter(result)
-				.get(URL).then()
+			RestAssured.given().filter(result).get(URL).then()
 				.body("bookId", equalTo(1))
 				.and().body("tags.tagId", hasItems(1, 2))
 				.and().body("tags.name", hasItems("Programming", "REST"));
-			getBasicRequestSpecificationFilter = result;
+			
+			basicGetRequestSpecificationFilter = result;
 			return result;
 		} else {
-			return getBasicRequestSpecificationFilter;
+			return basicGetRequestSpecificationFilter;
 		}
 	}
 	

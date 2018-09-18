@@ -13,6 +13,7 @@ public class SpecificationFilter implements Filter {
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(SpecificationFilter.class);
 	private FilterableRequestSpecification filterableRequestSpecification;
+	private Response response;
 
 	@Override
 	public Response filter(
@@ -23,7 +24,8 @@ public class SpecificationFilter implements Filter {
 		if (LOGGER.isDebugEnabled()) {
 			logRequest(requestSpecification);
 		}
-		return filterContext.next(requestSpecification, responseSpecification);
+		response = filterContext.next(requestSpecification, responseSpecification);
+		return response;
 	}
 
 	private void logRequest(final FilterableRequestSpecification requestSpecification) {
@@ -40,11 +42,15 @@ public class SpecificationFilter implements Filter {
 		if (requestSpecification.getBody() != null) {
 			loggingText.append("body: " + requestSpecification.getBody().toString());
 		}
-		LOGGER.trace(loggingText.toString());
+		LOGGER.trace("Request details: ", loggingText);
 	}
 	
-	public FilterableRequestSpecification getFilterableRequestSpecification() {
+	FilterableRequestSpecification getFilterableRequestSpecification() {
 		return filterableRequestSpecification;
+	}
+	
+	Response getResponse() {
+		return response;
 	}
 
 }

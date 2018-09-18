@@ -1,5 +1,6 @@
 package com.github.rafasantos.restapidoc;
 
+import io.restassured.response.Response;
 import io.restassured.specification.FilterableRequestSpecification;
 
 public class SpecificationParser {
@@ -14,6 +15,10 @@ public class SpecificationParser {
 		return filter.getFilterableRequestSpecification();
 	}
 
+	private Response getResponse() {
+		return filter.getResponse();
+	}
+	
 	public String requestAsCurl() {
 		StringBuilder result = new StringBuilder();
 		result.append(CurlParser.buildMethod(getRequest().getMethod()));
@@ -25,6 +30,14 @@ public class SpecificationParser {
 		}
 		result.append(CurlParser.escapeUrl(getRequest().getURI()));
 		return result.toString();
+	}
+
+	public String responseAsText() {
+		if (getResponse() == null || getResponse().getBody() == null) {
+			return null;
+		} else {
+			return getResponse().getBody().asString();
+		}
 	}
 	
 }
