@@ -11,6 +11,11 @@ import io.restassured.http.Headers;
 import io.restassured.specification.FilterableRequestSpecification;
 
 public class CurlParser {
+	
+	private static final String NEW_LINE = " \\\n";
+	
+	// Utility classes should not have public constructors
+	private CurlParser() {}
 
 	static String buildBody(FilterableRequestSpecification filterableRequestSpecification) {
 		if (filterableRequestSpecification.getBody() == null) return "";
@@ -19,7 +24,7 @@ public class CurlParser {
 		// At first glance, escaping as JavaScript looks very close to escaping as bash, so let's use it for now.
 		requestBody = StringEscapeUtils.escapeJavaScript(requestBody);
 		result.append("-d \"" + requestBody + "\"");
-		result.append(" \\\n");
+		result.append(NEW_LINE);
 		return result.toString();
 	}
 	
@@ -29,7 +34,7 @@ public class CurlParser {
 		formParameters.forEach((key, value) -> {
 			result.append("-F ");
 			result.append("\"" + key + "=" + value + "\"");
-			result.append(" \\\n");
+			result.append(NEW_LINE);
 		});
 		return result.toString();
 	}
@@ -38,10 +43,7 @@ public class CurlParser {
 		StringBuilder result = new StringBuilder();
 		List<Header> filteredHeaders = headers.asList().stream()
 			.filter(header -> {
-				if ("Accept".equalsIgnoreCase(header.getName()) && "*/*".equals(header.getValue())) {					
-					return false;
-				}
-				return true;
+				return !("Accept".equalsIgnoreCase(header.getName()) && "*/*".equals(header.getValue()));
 			})
 			.collect(Collectors.toList());
 		
@@ -57,7 +59,7 @@ public class CurlParser {
 		if (!"GET".equalsIgnoreCase(method)) {
 			result.append(" -X " + method);
 		}
-		result.append(" \\\n");
+		result.append(NEW_LINE);
 		return result.toString();
 	}
 

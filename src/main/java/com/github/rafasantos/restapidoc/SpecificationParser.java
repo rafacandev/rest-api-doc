@@ -33,11 +33,12 @@ public class SpecificationParser {
 	}
 
 	public String responseAsText() {
-		if (getResponse() == null || getResponse().getBody() == null) {
-			return null;
-		} else {
-			return getResponse().getBody().asString();
+		StringBuilder result = new StringBuilder("----- Response -----\n");
+		result.append(ResponseParser.buildHeaders(getResponse().getHeaders()));
+		if (getResponse() != null && getResponse().getBody() != null) {
+			result.append(getResponse().getBody().asString());
 		}
+		return result.toString();
 	}
 	
 }

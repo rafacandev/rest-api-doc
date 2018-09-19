@@ -30,23 +30,8 @@ public class SpecificationParserTest {
 				"-F \"formParamKey=formParamValue\" \\\n" + 
 				"http://www.mocky.io/v2/5a08a8cb3200000a0a138011";
 		assertEquals(expectedResult, actualResult);
+		
+		System.out.println(fixture.responseAsText());
 	}
 	
-	@Test
-	public void shouldGetBasicResponseAsJson() {
-		SpecificationFilter filter = TestUtil.buildBasicGetRequestFilter();
-		SpecificationParser fixture = new SpecificationParser(filter);
-		fixture.requestAsCurl();
-		String actualResult = fixture.responseAsText();
-		String expectedResult = "{\n" + 
-				"    \"bookId\": 1,\n" + 
-				"    \"title\": \"Documenting and testing APIs with Rest Doc Maker\",\n" + 
-				"    \"tags\": [\n" + 
-				"        {\"tagId\": 1, \"name\": \"Programming\"},\n" + 
-				"        {\"tagId\": 2, \"name\": \"REST\"}\n" + 
-				"    ]\n" + 
-				"}";
-		assertEquals(expectedResult, actualResult);
-	}
-
 }
