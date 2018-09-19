@@ -30,8 +30,6 @@ public class SpecificationParserTest {
 				"-F \"formParamKey=formParamValue\" \\\n" + 
 				"http://www.mocky.io/v2/5a08a8cb3200000a0a138011";
 		assertEquals(expectedResult, actualResult);
-		
-		System.out.println(fixture.responseAsText());
 	}
 	
 }
