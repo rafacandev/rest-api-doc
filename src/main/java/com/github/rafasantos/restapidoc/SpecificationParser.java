@@ -32,6 +32,19 @@ public class SpecificationParser {
 		return result.toString();
 	}
 
+	public String requestAsText() {
+		StringBuilder result = new StringBuilder();
+		result.append(getRequest().getMethod() + " ");
+		result.append(getRequest().getURI() + "\n");
+		result.append(TextParser.buildHeaders(getRequest().getHeaders()));
+		if (getRequest().getBody() != null) {
+			result.append(TextParser.buildBody(getRequest()));
+		} else {
+			result.append(TextParser.buildFormParms(getRequest().getFormParams()));
+		}
+		return result.toString();
+	}
+
 	public String responseAsText() {
 		StringBuilder result = new StringBuilder("----- Response -----\n");
 		result.append(getResponse().statusLine() + "\n");

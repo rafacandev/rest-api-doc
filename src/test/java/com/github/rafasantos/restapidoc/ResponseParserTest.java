@@ -15,8 +15,8 @@ public class ResponseParserTest {
 				new Header("headerName1", "headerValue1"), 
 				new Header("headerName2", "headerValue2"));
 		String actualResult = ResponseParser.buildHeaders(headers);
-		String expectedResult = "headerName1: headerValue1\n"
-				+ "headerName2: headerValue2\n";
+		String expectedResult = "-- Headers:\n   headerName1: headerValue1\n"
+				+ "   headerName2: headerValue2\n";
 		assertEquals(expectedResult, actualResult);
 	}
 	

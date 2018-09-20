@@ -32,4 +32,12 @@ public class SpecificationParserTest {
 		assertEquals(expectedResult, actualResult);
 	}
 	
+	@Test
+	public void shouldGetBasicRequestAsText() {
+		SpecificationFilter filter = TestUtil.buildBasicGetRequestFilter();
+		SpecificationParser fixture = new SpecificationParser(filter);
+		String actualResult = fixture.requestAsText();
+		assertEquals("GET http://www.mocky.io/v2/5a08a8cb3200000a0a138011\n", actualResult);
+	}
+
 }

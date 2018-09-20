@@ -79,8 +79,4 @@ public class CurlParser {
 		return url.replace("&", "\\&");
 	}
 
-	public static String parseRequest(FilterableRequestSpecification request) {
-		return null;
-	}
-	
 }
