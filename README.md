@@ -15,18 +15,18 @@ can be inserted in document templates.
 Example of a typical case:
 
 ```
-	SpecificationFilter filter = new SpecificationFilter();
-	RestAssured.given()
-		.filter(filter)
-		.header("headerKey", "headerValue")
-		.formParam("formParamKey", "formParamValue")
-		.post("http://www.mocky.io/v2/5a08a8cb3200000a0a138011");
-	SpecificationParser parser = new SpecificationParser(filter);
-	System.out.println(
-			"----- Request -----\n"
-			+ parser.requestAsCurl()
-			+ "\n\n----- Response -----\n" 
-			+ parser.responseAsText());
+SpecificationFilter filter = new SpecificationFilter();
+RestAssured.given()
+	.filter(filter)
+	.header("headerKey", "headerValue")
+	.formParam("formParamKey", "formParamValue")
+	.post("http://www.mocky.io/v2/5a08a8cb3200000a0a138011");
+SpecificationParser parser = new SpecificationParser(filter);
+System.out.println(
+		"----- Request -----\n"
+		+ parser.requestAsCurl()
+		+ "\n\n----- Response -----\n" 
+		+ parser.responseAsText());
 ```
 
 
