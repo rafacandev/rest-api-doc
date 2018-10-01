@@ -46,8 +46,7 @@ public class SpecificationParser {
 	}
 
 	public String responseAsText() {
-		StringBuilder result = new StringBuilder("----- Response -----\n");
-		result.append(getResponse().statusLine() + "\n");
+		StringBuilder result = new StringBuilder(getResponse().statusLine() + "\n");
 		result.append(ResponseParser.buildHeaders(getResponse().getHeaders()));
 		if (getResponse() != null && getResponse().getBody() != null) {
 			result.append(getResponse().getBody().asString());
