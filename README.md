@@ -41,7 +41,6 @@ http://www.mocky.io/v2/5a08a8cb3200000a0a138011
 ----- Response -----
 HTTP/1.1 200 OK
 -- Headers:
-   Date: Mon, 01 Oct 2018 00:03:30 GMT
    Content-Type: application/json
 {
     "bookId": 1,
