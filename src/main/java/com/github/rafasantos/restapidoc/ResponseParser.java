@@ -6,7 +6,7 @@ public class ResponseParser {
 
 	public static String buildHeaders(Headers headers) {
 		StringBuilder result = new StringBuilder();
-		result.append("-- Headers:\n");
+		result.append("-- Headers --\n");
 		headers.forEach(header -> 
 			result.append("   " + header.getName() + ": " + header.getValue() + "\n")
 		);

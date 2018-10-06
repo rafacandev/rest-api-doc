@@ -11,11 +11,11 @@ public class SpecificationParser {
 		this.filter = specificationFilter;
 	}
 	
-	private FilterableRequestSpecification getRequest() {
+	protected FilterableRequestSpecification getRequest() {
 		return filter.getFilterableRequestSpecification();
 	}
 
-	private Response getResponse() {
+	protected Response getResponse() {
 		return filter.getResponse();
 	}
 	
@@ -49,15 +49,21 @@ public class SpecificationParser {
 		StringBuilder result = new StringBuilder(getResponse().statusLine() + "\n");
 		result.append(ResponseParser.buildHeaders(getResponse().getHeaders()));
 		if (getResponse() != null && getResponse().getBody() != null) {
+			result.append("-- Body --\n");
 			result.append(getResponse().getBody().asString());
 		}
 		return result.toString();
 	}
 
     public String asHtmlSnippet() {
-		String summary = requestAsText();
-		String plainText = summary;
-		String curl = requestAsCurl();
-		return HtmlSnippetParser.buildHtmlSnippet(summary, plainText, curl, responseAsText());
+		String summaryTab = buildSummary();
+		String plainTextTab = requestAsText();
+		String curlTab = requestAsCurl();
+		return HtmlSnippetParser.buildHtmlSnippet(summaryTab, plainTextTab, curlTab, responseAsText());
     }
+
+	private String buildSummary() {
+		return getRequest().getMethod() + " " + getRequest().getURI() + "\n" + getResponse().statusLine();
+	}
+
 }

@@ -39,7 +39,7 @@ public class TestUtil {
 		}
 	}
 
-	public static String buildHtmlSnippet(String summaryText, String plainText, String curl, String response) {
+	public static String buildHtmlSnippet(String summaryText, String plainText, String curlText, String responseText) {
 		return
 			"<div class=\"snippet\">\n" +
 			"  <div class=\"snippet-labels\">\n" +
@@ -48,13 +48,13 @@ public class TestUtil {
 			"    <label for=\"snippet-content-3\" onclick=\"onSnippetLabelClick(this)\">curl</label>\n" +
 			"  </div>\n" +
 			"  <div id=\"snippet-content-1\" class=\"snippet-content active\">\n" +
-			"    <pre>" + summaryText + "\n---- Response ----\n" + response + "</pre>\n" +
+			"    <pre>" + summaryText + "</pre>\n" +
 			"  </div>\n" +
 			"  <div id=\"snippet-content-2\" class=\"snippet-content\">\n" +
-			"    <pre>" + plainText + "\n---- Response ----\n" + response + "</pre>\n" +
+			"    <pre>" + plainText + "\n---- Response ----\n" + responseText + "</pre>\n" +
 			"  </div>\n" +
 			"  <div id=\"snippet-content-3\" class=\"snippet-content\">\n" +
-			"    <pre>" + curl + "\n---- Response ----\n" + response + "</pre>\n" +
+			"    <pre>" + curlText + "\n---- Response ----\n" + responseText + "</pre>\n" +
 			"  </div>\n" +
 			"</div>";
 	}

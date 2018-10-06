@@ -6,16 +6,15 @@
 
   <groupId>rafaelsantosbra</groupId>
   <artifactId>rest-api-doc-sample</artifactId>
-  <version>1.0-SNAPSHOT</version>
+  <version>1.0</version>
 
   <name>rest-api-doc-sample</name>
-  <!-- FIXME change it to the project's website -->
-  <url>http://www.example.com</url>
-  
+  <url>https://github.com/rafasantos/rest-api-doc/tree/master/sample</url>
+
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <maven.compiler.source>1.7</maven.compiler.source>
-    <maven.compiler.target>1.7</maven.compiler.target>
+    <maven.compiler.source>1.8</maven.compiler.source>
+    <maven.compiler.target>1.8</maven.compiler.target>
 	<rafaelsantosbra-rest-api-doc-version>1.0-SNAPSHOT</rafaelsantosbra-rest-api-doc-version>
     <org.slf4j-version>1.7.25</org.slf4j-version>
   </properties>
@@ -34,7 +33,7 @@
   </dependencies>
 
   <build>
-  	<defaultGoal>exec:java</defaultGoal>
+  	<defaultGoal>compile exec:java</defaultGoal>
     <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
       <plugins>
         <plugin>
@@ -80,9 +79,20 @@
 			</executions>
 			<configuration>
 				<mainClass>com.github.rafasantos.restapidoc.sample.App</mainClass>
+                <arguments>${project.build.directory}/sample.html</arguments>
 			</configuration>
 		</plugin>
       </plugins>
     </pluginManagement>
+      <plugins>
+          <plugin>
+              <groupId>org.apache.maven.plugins</groupId>
+              <artifactId>maven-compiler-plugin</artifactId>
+              <configuration>
+                  <source>8</source>
+                  <target>8</target>
+              </configuration>
+          </plugin>
+      </plugins>
   </build>
 </project>

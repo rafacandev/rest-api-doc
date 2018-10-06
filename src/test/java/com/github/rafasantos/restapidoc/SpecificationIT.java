@@ -1,10 +1,14 @@
 package com.github.rafasantos.restapidoc;
 
-import static org.junit.Assert.assertEquals;
+import io.restassured.RestAssured;
+import io.restassured.response.Response;
+import io.restassured.specification.FilterableRequestSpecification;
 import org.junit.Test;
 
-import io.restassured.RestAssured;
-import static org.mockito.Mockito.*;
+import static org.junit.Assert.assertEquals;
+import static org.mockito.Mockito.doReturn;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.spy;
 
 public class SpecificationIT {
 	
@@ -41,19 +45,29 @@ public class SpecificationIT {
 	}
 
 	@Test
-	public void shouldGetBasicHtmlSnippet() {
-		String textRequest = "Text Request";
-		String curlRequest = "curl Request";
+	public void shouldGetBasicHtmlSnippet() throws Exception {
+		String summary = "GET http://test.com\nOK 200";
+		String plainRequest = "Request Tab";
+		String curlRequest = "Curl Request";
 		String textResponse = "Text Response";
 
-		SpecificationFilter filter = mock(SpecificationFilter.class);
-		SpecificationParser fixture = spy(new SpecificationParser(filter));
-		doReturn(textRequest).when(fixture).requestAsText();
+		SpecificationParser fixture = spy(new SpecificationParser(null));
+
+		doReturn(plainRequest).when(fixture).requestAsText();
 		doReturn(curlRequest).when(fixture).requestAsCurl();
 		doReturn(textResponse).when(fixture).responseAsText();
 
+		FilterableRequestSpecification request = mock(FilterableRequestSpecification.class);
+		doReturn("GET").when(request).getMethod();
+		doReturn("http://test.com").when(request).getURI();
+		doReturn(request).when(fixture).getRequest();
+
+		Response response = mock(Response.class);
+		doReturn("OK 200").when(response).statusLine();
+		doReturn(response).when(fixture).getResponse();
+
 		String actualResult = fixture.asHtmlSnippet();
-		String expectedResult = TestUtil.buildHtmlSnippet(textRequest, textRequest, curlRequest, textResponse);
+		String expectedResult = TestUtil.buildHtmlSnippet(summary, plainRequest, curlRequest, textResponse);
 		assertEquals(expectedResult, actualResult);
 	}
 

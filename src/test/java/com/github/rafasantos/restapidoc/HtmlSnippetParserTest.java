@@ -11,8 +11,9 @@ public class HtmlSnippetParserTest {
 		String summaryText = "My summary";
 		String plainText = "My plain text";
 		String curl = "curl";
-		String actualResult = HtmlSnippetParser.buildHtmlSnippet(summaryText, plainText, curl, "Response");
-		String expectedResult = TestUtil.buildHtmlSnippet(summaryText, plainText, curl, "Response");
+		String responseText = "Response text";
+		String actualResult = HtmlSnippetParser.buildHtmlSnippet(summaryText, plainText, curl, responseText);
+		String expectedResult = TestUtil.buildHtmlSnippet(summaryText, plainText, curl, responseText);
 		assertEquals(expectedResult, actualResult);
 	}
 

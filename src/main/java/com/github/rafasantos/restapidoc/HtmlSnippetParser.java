@@ -4,7 +4,7 @@ public class HtmlSnippetParser {
 
 	private static int snippetContentCounter = 0;
 
-	public static String buildHtmlSnippet(String summaryText, String plainText, String curl, String responseText) {
+	public static String buildHtmlSnippet(String summaryText, String plainText, String curlTab, String responseText) {
 		int summaryCounter = ++snippetContentCounter;
 		int plainTextCounter = ++snippetContentCounter;
 		int curlCounter = ++snippetContentCounter;
@@ -16,13 +16,13 @@ public class HtmlSnippetParser {
 			"    <label for=\"snippet-content-" + curlCounter + "\" onclick=\"onSnippetLabelClick(this)\">curl</label>\n" +
 			"  </div>\n" +
 			"  <div id=\"snippet-content-" + summaryCounter + "\" class=\"snippet-content active\">\n" +
-			"    <pre>" + summaryText + "\n---- Response ----\n" + responseText + "</pre>\n" +
+			"    <pre>" + summaryText + "</pre>\n" +
 			"  </div>\n" +
 			"  <div id=\"snippet-content-" + plainTextCounter + "\" class=\"snippet-content\">\n" +
 			"    <pre>" + plainText + "\n---- Response ----\n" + responseText + "</pre>\n" +
 			"  </div>\n" +
 			"  <div id=\"snippet-content-" + curlCounter + "\" class=\"snippet-content\">\n" +
-			"    <pre>" + curl + "\n---- Response ----\n" + responseText + "</pre>\n" +
+			"    <pre>" + curlTab + "\n---- Response ----\n" + responseText + "</pre>\n" +
 			"  </div>\n" +
 			"</div>";
 	}

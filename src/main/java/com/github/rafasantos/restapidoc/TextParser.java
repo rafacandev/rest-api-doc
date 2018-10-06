@@ -25,7 +25,7 @@ public class TextParser {
 		if (formParameters.isEmpty()) return "";
 		StringBuilder result = new StringBuilder();
 		if (!formParameters.isEmpty()) {
-			result.append("-- Form Parameters:\n");
+			result.append("-- Form Parameters --\n");
 		}
 		formParameters.forEach((key, value) -> {
 			result.append("   "+ key + ": " + value + "\n");
@@ -41,7 +41,7 @@ public class TextParser {
 			})
 			.collect(Collectors.toList());
 		if (!filteredHeaders.isEmpty()) {
-			result.append("-- Headers:\n");
+			result.append("-- Headers --\n");
 		}
 		filteredHeaders.forEach(h -> {
 			result.append("   " + h.getName() + ": " + h.getValue() + "\n");

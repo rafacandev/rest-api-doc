@@ -1,0 +1,35 @@
+.snippet {
+    border: solid 2px darkgreen;
+}
+
+.snippet-labels {
+    background-color: honeydew;
+    display: flex;
+}
+
+.snippet-labels label {
+    cursor: pointer;
+    padding: .5em 1em .5em 1em;
+}
+
+.snippet-labels label:hover {
+    background-color: palegreen;
+}
+
+.snippet-labels label:active {
+    background-color: springgreen;
+}
+
+.snippet-content {
+    background-color: white;
+    display: none;
+    padding: .5em;
+}
+
+.snippet-content pre {
+    margin: 0em;
+}
+
+.snippet-content.active {
+    display: block;
+}
