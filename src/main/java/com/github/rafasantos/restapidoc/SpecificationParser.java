@@ -28,7 +28,7 @@ public class SpecificationParser {
 		} else {
 			result.append(CurlParser.buildFormParms(getRequest().getFormParams()));
 		}
-		result.append(CurlParser.escapeUrl(getRequest().getURI()));
+		result.append(CurlParser.escapeUrl(getRequest().getURI()) + "\n");
 		return result.toString();
 	}
 
@@ -54,7 +54,7 @@ public class SpecificationParser {
 		return result.toString();
 	}
 
-    public String requestHtmlSnippet() {
+    public String asHtmlSnippet() {
 		String summary = requestAsText();
 		String plainText = summary;
 		String curl = requestAsCurl();

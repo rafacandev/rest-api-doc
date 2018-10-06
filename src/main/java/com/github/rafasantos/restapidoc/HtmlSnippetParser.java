@@ -15,14 +15,14 @@ public class HtmlSnippetParser {
 			"    <label for=\"snippet-content-" + plainTextCounter + "\" onclick=\"onSnippetLabelClick(this)\">Plain Text</label>\n" +
 			"    <label for=\"snippet-content-" + curlCounter + "\" onclick=\"onSnippetLabelClick(this)\">curl</label>\n" +
 			"  </div>\n" +
-			"  <div id=\"snippet-content-1\" class=\"snippet-content active\">\n" +
-			"    <pre>" + summaryText + "\n ---- Response ----" + responseText + "</pre>\n" +
+			"  <div id=\"snippet-content-" + summaryCounter + "\" class=\"snippet-content active\">\n" +
+			"    <pre>" + summaryText + "\n---- Response ----\n" + responseText + "</pre>\n" +
 			"  </div>\n" +
-			"  <div id=\"snippet-content-2\" class=\"snippet-content\">\n" +
-			"    <pre>" + plainText + "\n ---- Response ----" + responseText + "</pre>\n" +
+			"  <div id=\"snippet-content-" + plainTextCounter + "\" class=\"snippet-content\">\n" +
+			"    <pre>" + plainText + "\n---- Response ----\n" + responseText + "</pre>\n" +
 			"  </div>\n" +
-			"  <div id=\"snippet-content-3\" class=\"snippet-content\">\n" +
-			"    <pre>" + curl + "\n ---- Response ----" + responseText + "</pre>\n" +
+			"  <div id=\"snippet-content-" + curlCounter + "\" class=\"snippet-content\">\n" +
+			"    <pre>" + curl + "\n---- Response ----\n" + responseText + "</pre>\n" +
 			"  </div>\n" +
 			"</div>";
 	}

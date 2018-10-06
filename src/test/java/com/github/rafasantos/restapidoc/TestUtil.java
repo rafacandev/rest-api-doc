@@ -48,13 +48,13 @@ public class TestUtil {
 			"    <label for=\"snippet-content-3\" onclick=\"onSnippetLabelClick(this)\">curl</label>\n" +
 			"  </div>\n" +
 			"  <div id=\"snippet-content-1\" class=\"snippet-content active\">\n" +
-			"    <pre>" + summaryText + "\n ---- Response ----" + response + "</pre>\n" +
+			"    <pre>" + summaryText + "\n---- Response ----\n" + response + "</pre>\n" +
 			"  </div>\n" +
 			"  <div id=\"snippet-content-2\" class=\"snippet-content\">\n" +
-			"    <pre>" + plainText + "\n ---- Response ----" + response + "</pre>\n" +
+			"    <pre>" + plainText + "\n---- Response ----\n" + response + "</pre>\n" +
 			"  </div>\n" +
 			"  <div id=\"snippet-content-3\" class=\"snippet-content\">\n" +
-			"    <pre>" + curl + "\n ---- Response ----" + response + "</pre>\n" +
+			"    <pre>" + curl + "\n---- Response ----\n" + response + "</pre>\n" +
 			"  </div>\n" +
 			"</div>";
 	}

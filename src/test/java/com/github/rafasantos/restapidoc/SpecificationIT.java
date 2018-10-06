@@ -14,7 +14,7 @@ public class SpecificationIT {
 		SpecificationParser fixture = new SpecificationParser(filter);
 		String actualResult = fixture.requestAsCurl();
 		String expectedResult = "curl -v \\\n"
-				+ "http://www.mocky.io/v2/5a08a8cb3200000a0a138011";
+				+ "http://www.mocky.io/v2/5a08a8cb3200000a0a138011\n";
 		assertEquals(expectedResult, actualResult);
 	}
 
@@ -28,7 +28,7 @@ public class SpecificationIT {
 				"-H \"headerKey: headerValue\" \\\n" +
 				"-H \"Content-Type: application/x-www-form-urlencoded; charset=ISO-8859-1\" \\\n" +
 				"-F \"formParamKey=formParamValue\" \\\n" +
-				"http://www.mocky.io/v2/5a08a8cb3200000a0a138011";
+				"http://www.mocky.io/v2/5a08a8cb3200000a0a138011\n";
 		assertEquals(expectedResult, actualResult);
 	}
 
@@ -41,7 +41,7 @@ public class SpecificationIT {
 	}
 
 	@Test
-	public void shouldGetBasicRequestHtmlSnippet() {
+	public void shouldGetBasicHtmlSnippet() {
 		String textRequest = "Text Request";
 		String curlRequest = "curl Request";
 		String textResponse = "Text Response";
@@ -52,7 +52,7 @@ public class SpecificationIT {
 		doReturn(curlRequest).when(fixture).requestAsCurl();
 		doReturn(textResponse).when(fixture).responseAsText();
 
-		String actualResult = fixture.requestHtmlSnippet();
+		String actualResult = fixture.asHtmlSnippet();
 		String expectedResult = TestUtil.buildHtmlSnippet(textRequest, textRequest, curlRequest, textResponse);
 		assertEquals(expectedResult, actualResult);
 	}
