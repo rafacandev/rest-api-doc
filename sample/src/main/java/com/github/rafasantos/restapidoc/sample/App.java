@@ -19,5 +19,7 @@ public class App {
 				+ parser.requestAsCurl()
 				+ "\n\n----- Response -----\n" 
 				+ parser.responseAsText());
+
+		HtmlParser.buildSampeHtml();
 	}
 }

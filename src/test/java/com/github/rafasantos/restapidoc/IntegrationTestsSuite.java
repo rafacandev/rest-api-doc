@@ -8,5 +8,5 @@ import org.junit.runners.Suite.SuiteClasses;
 @SuiteClasses({
     SpecificationIT.class
 })
-public class IntegrationSuite {
+public class IntegrationTestsSuite {
 }

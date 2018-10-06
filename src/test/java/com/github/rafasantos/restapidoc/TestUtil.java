@@ -38,5 +38,25 @@ public class TestUtil {
 			return basicGetRequestSpecificationFilter;
 		}
 	}
-	
+
+	public static String buildHtmlSnippet(String summaryText, String plainText, String curl, String response) {
+		return
+			"<div class=\"snippet\">\n" +
+			"  <div class=\"snippet-labels\">\n" +
+			"    <label for=\"snippet-content-1\" onclick=\"onSnippetLabelClick(this)\">Summary</label>\n" +
+			"    <label for=\"snippet-content-2\" onclick=\"onSnippetLabelClick(this)\">Plain Text</label>\n" +
+			"    <label for=\"snippet-content-3\" onclick=\"onSnippetLabelClick(this)\">curl</label>\n" +
+			"  </div>\n" +
+			"  <div id=\"snippet-content-1\" class=\"snippet-content active\">\n" +
+			"    <pre>" + summaryText + "\n ---- Response ----" + response + "</pre>\n" +
+			"  </div>\n" +
+			"  <div id=\"snippet-content-2\" class=\"snippet-content\">\n" +
+			"    <pre>" + plainText + "\n ---- Response ----" + response + "</pre>\n" +
+			"  </div>\n" +
+			"  <div id=\"snippet-content-3\" class=\"snippet-content\">\n" +
+			"    <pre>" + curl + "\n ---- Response ----" + response + "</pre>\n" +
+			"  </div>\n" +
+			"</div>";
+	}
+
 }

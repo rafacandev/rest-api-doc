@@ -53,5 +53,11 @@ public class SpecificationParser {
 		}
 		return result.toString();
 	}
-	
+
+    public String requestHtmlSnippet() {
+		String summary = requestAsText();
+		String plainText = summary;
+		String curl = requestAsCurl();
+		return HtmlSnippetParser.buildHtmlSnippet(summary, plainText, curl, responseAsText());
+    }
 }
