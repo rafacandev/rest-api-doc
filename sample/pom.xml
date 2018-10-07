@@ -15,7 +15,7 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
-	<rafaelsantosbra-rest-api-doc-version>1.0-SNAPSHOT</rafaelsantosbra-rest-api-doc-version>
+	<rafaelsantosbra-rest-api-doc-version>1.0</rafaelsantosbra-rest-api-doc-version>
     <org.slf4j-version>1.7.25</org.slf4j-version>
   </properties>
 

@@ -7,7 +7,7 @@
 
 	<groupId>rafaelsantosbra</groupId>
 	<artifactId>rest-api-doc</artifactId>
-	<version>1.0-SNAPSHOT</version>
+	<version>1.0</version>
 
 	<name>rest-api-doc</name>
 	<url>https://github.com/rafasantos/rest-api-doc</url>
