@@ -15,7 +15,7 @@ public class SpecificationParser {
 		return filter.getFilterableRequestSpecification();
 	}
 
-	protected Response getResponse() {
+	public Response getResponse() {
 		return filter.getResponse();
 	}
 	
@@ -38,6 +38,7 @@ public class SpecificationParser {
 		result.append(getRequest().getURI() + "\n");
 		result.append(TextParser.buildHeaders(getRequest().getHeaders()));
 		if (getRequest().getBody() != null) {
+			result.append("-- Body --\n");
 			result.append(TextParser.buildBody(getRequest()));
 		} else {
 			result.append(TextParser.buildFormParms(getRequest().getFormParams()));
@@ -50,7 +51,7 @@ public class SpecificationParser {
 		result.append(ResponseParser.buildHeaders(getResponse().getHeaders()));
 		if (getResponse() != null && getResponse().getBody() != null) {
 			result.append("-- Body --\n");
-			result.append(getResponse().getBody().asString());
+			result.append(JsonUtil.prettyJson(getResponse().getBody().asString()));
 		}
 		return result.toString();
 	}

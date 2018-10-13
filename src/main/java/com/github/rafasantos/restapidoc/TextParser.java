@@ -15,9 +15,10 @@ public class TextParser {
 
 	static String buildBody(FilterableRequestSpecification filterableRequestSpecification) {
 		if (filterableRequestSpecification.getBody() == null) {
-			return "";
+			return "\n";
 		} else {
-			return filterableRequestSpecification.getBody().toString();
+			String result = filterableRequestSpecification.getBody().toString();
+			return JsonUtil.prettyJson(result);
 		}
 	}
 	
